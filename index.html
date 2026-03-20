@@ -3,100 +3,109 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LLM Workflow Prompts – March 20, 2026</title>
+  <title>LLM Workflow Prompts – March 19, 2026</title>
   <style>
-:root {
-  --bg:#f6f8fb; --card:#fff; --text:#162033; --muted:#5b6475; --line:#dbe2ee;
-  --accent:#2563eb; --code-bg:#0b1220; --code-fg:#e5edf7;
-  --plan-bg:#eff6ff; --plan-h:#1d4ed8;
-  --code-sec-bg:#f0fdf4; --code-sec-h:#15803d;
-  --meta-bg:#faf5ff; --meta-h:#6d28d9;
-  --test-bg:#fff7ed; --test-h:#c2410c;
-}
-* { box-sizing:border-box; }
-body { margin:0; font-family:Inter, system-ui, sans-serif; background:var(--bg); color:var(--text); }
-.wrap { max-width:1500px; margin:0 auto; padding:28px 18px 52px; }
-h1 { margin:0 0 4px; text-align:center; font-size:2rem; }
-.intro { text-align:center; color:var(--muted); max-width:900px; margin:6px auto 16px; }
-.toc { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:14px; }
-.toc a { padding:7px 14px; border-radius:8px; font-size:.9rem; font-weight:500; text-decoration:none; border:1px solid var(--line); background:#fff; color:var(--text); }
-.toc a:hover { background:#eef4ff; }
-.controls { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:14px; }
-input, select { padding:10px 12px; border:1px solid var(--line); border-radius:10px; font-size:.95rem; background:#fff; min-width:200px; }
-h2 { margin:28px 0 10px; padding:10px 14px; border-radius:8px; font-size:1.2rem; scroll-margin-top:12px; }
-h2.plan { background:var(--plan-bg); color:var(--plan-h); }
-h2.code { background:var(--code-sec-bg); color:var(--code-sec-h); }
-h2.meta { background:var(--meta-bg); color:var(--meta-h); }
-h2.test { background:var(--test-bg); color:var(--test-h); border:2px solid #fed7aa; }
-.table-wrap { overflow-x:auto; border-radius:12px; margin-bottom:6px; }
-table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); box-shadow:0 4px 14px rgba(15,23,42,.04); }
-th, td { border-bottom:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top; }
-th { background:#f9fbff; cursor:pointer; font-size:.82rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); position:sticky; top:0; z-index:2; }
-th:hover { background:#eef4ff; }
-.toggle { background:var(--accent); color:#fff; border:none; padding:7px 10px; border-radius:7px; cursor:pointer; font-size:.85rem; white-space:nowrap; }
-.expandable { display:none; margin-top:10px; min-width:300px; max-width:640px; }
-pre { margin:0; white-space:pre-wrap; word-break:break-word; background:var(--code-bg); color:var(--code-fg); padding:13px; border-radius:8px; font-size:.87rem; }
-code { background:#e8edf5; color:#1e3a5f; padding:2px 6px; border-radius:4px; font-size:.9rem; }
-a { color:var(--accent); text-decoration:none; }
-a:hover { text-decoration:underline; }
-.install-box { border:2px solid var(--line); border-radius:12px; padding:16px 18px; margin:24px 0 0; background:#fff; }
-.hint { color:var(--muted); font-size:.88rem; text-align:center; margin-bottom:8px; }
-.foot { margin-top:20px; color:var(--muted); font-size:.88rem; text-align:center; }
-</style>
+    :root {
+      --bg:#f6f8fb; --card:#fff; --text:#162033; --muted:#5b6475; --line:#dbe2ee;
+      --accent:#2563eb; --code-bg:#0b1220; --code-fg:#e5edf7;
+      --plan-bg:#eff6ff; --plan-h:#1d4ed8;
+      --code-sec-bg:#f0fdf4; --code-sec-h:#15803d;
+      --meta-bg:#faf5ff; --meta-h:#6d28d9;
+      --test-bg:#fff7ed; --test-h:#c2410c;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter, system-ui, sans-serif; background:var(--bg); color:var(--text); }
+    .wrap { max-width:1500px; margin:0 auto; padding:28px 18px 52px; }
+    h1 { margin:0 0 4px; text-align:center; font-size:2rem; }
+    .badge { background:#ef4444; color:#fff; font-size:.75rem; padding:3px 8px; border-radius:99px; vertical-align:middle; margin-left:8px; }
+    .new-badge { background:#f97316; color:#fff; font-size:.72rem; padding:2px 7px; border-radius:99px; margin-left:6px; vertical-align:middle; }
+    .intro { text-align:center; color:var(--muted); max-width:900px; margin:6px auto 16px; }
+    .toc { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:14px; }
+    .toc a { padding:7px 14px; border-radius:8px; font-size:.9rem; font-weight:500; text-decoration:none; border:1px solid var(--line); background:#fff; color:var(--text); }
+    .toc a:hover { background:#eef4ff; }
+    .controls { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:14px; }
+    input, select { padding:10px 12px; border:1px solid var(--line); border-radius:10px; font-size:.95rem; background:#fff; min-width:200px; }
+    h2 { margin:28px 0 10px; padding:10px 14px; border-radius:8px; font-size:1.2rem; scroll-margin-top:12px; }
+    h2.plan { background:var(--plan-bg); color:var(--plan-h); }
+    h2.code { background:var(--code-sec-bg); color:var(--code-sec-h); }
+    h2.meta { background:var(--meta-bg); color:var(--meta-h); }
+    h2.test { background:var(--test-bg); color:var(--test-h); border:2px solid #fed7aa; }
+    .table-wrap { overflow-x:auto; border-radius:12px; margin-bottom:6px; }
+    table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); box-shadow:0 4px 14px rgba(15,23,42,.04); }
+    th, td { border-bottom:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top; }
+    th { background:#f9fbff; cursor:pointer; font-size:.82rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); position:sticky; top:0; z-index:2; }
+    th:hover { background:#eef4ff; }
+    .toggle { background:var(--accent); color:#fff; border:none; padding:7px 10px; border-radius:7px; cursor:pointer; font-size:.85rem; white-space:nowrap; }
+    .expandable { display:none; margin-top:10px; min-width:300px; max-width:640px; }
+    pre { margin:0; white-space:pre-wrap; word-break:break-word; background:var(--code-bg); color:var(--code-fg); padding:13px; border-radius:8px; font-size:.87rem; }
+    code { background:#e8edf5; color:#1e3a5f; padding:2px 6px; border-radius:4px; font-size:.9rem; }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .install-box { border:2px solid var(--line); border-radius:12px; padding:16px 18px; margin:24px 0 0; background:#fff; }
+    .hint { color:var(--muted); font-size:.88rem; text-align:center; margin-bottom:8px; }
+    .foot { margin-top:20px; color:var(--muted); font-size:.88rem; text-align:center; }
+    .stat { display:inline-block; background:#eff6ff; color:#1e3a5f; border-radius:8px; padding:6px 14px; font-size:.88rem; font-weight:600; margin:0 4px; }
+  </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>LLM Workflow Prompts <span class="badge">March 20, 2026</span></h1>
+  <h1>LLM Workflow Prompts <span class="badge">March 19, 2026</span></h1>
   <p class="intro">
     <span class="stat">20 prompts</span>
     <span class="stat">4 sections</span>
     <span class="stat">4 sources</span>
   </p>
-  <p class="intro">App creation, web development, meta prompting, and Testing & Evaluation. Each prompt ships as a Claude Code SKILL.md file.</p>
+  <p class="intro">App creation, web development, meta prompting, and — new today — Testing &amp; Evaluation. Each prompt ships as a Claude Code SKILL.md file.</p>
+
   <nav class="toc">
     <a href="#s-plan">🗺 Planning & Design</a>
     <a href="#s-code">🛠 Coding & Debugging</a>
     <a href="#s-meta">🧠 Meta Prompting</a>
     <a href="#s-test">🧪 Testing & Evaluation</a>
   </nav>
+
   <div class="controls">
-    <input id="search" type="text" placeholder="Search title, stack, source…" oninput="filterAll()">
+    <input id="search" type="text" placeholder="Search title, stack, source, summary…" oninput="filterAll()">
     <select id="secFilter" onchange="filterAll()">
       <option value="">All sections</option>
-      <option>Planning & Design</option>
-      <option>Coding & Debugging</option>
+      <option>Planning &amp; Design</option>
+      <option>Coding &amp; Debugging</option>
       <option>Meta Prompting</option>
-      <option>Testing & Evaluation</option>
+      <option>Testing &amp; Evaluation</option>
     </select>
     <select id="srcFilter" onchange="filterAll()">
       <option value="">All sources</option>
-      <option value="r/PromptEngineering">r/PromptEngineering</option>
+            <option value="Builder.io">Builder.io</option>
+      <option value="DeepEval by Confident AI">DeepEval by Confident AI</option>
       <option value="FlowGPT">FlowGPT</option>
-      <option value="PromptBase">PromptBase</option>
+      <option value="LangChain Agents">LangChain Agents</option>
       <option value="LangChain Hub">LangChain Hub</option>
-      <option value="Builder.io">Builder.io</option>
-      <option value="DeepEval by Confident AI">DeepEval</option>
+      <option value="Prompt Testing & Validation Frameworks">Prompt Testing & Validation Frameworks</option>
+      <option value="PromptBase">PromptBase</option>
+      <option value="r/ClaudeCode">r/ClaudeCode</option>
+      <option value="r/PromptEngineering">r/PromptEngineering</option>
     </select>
   </div>
-  <p class="hint">Click column headers to sort · "Show prompt" expands · Download ZIP below to install</p>
-  
+  <p class="hint">Click a column header to sort · "Show prompt" expands the full template · Download ZIP below to install all skills</p>
+
   <span id="s-plan"></span>
-  <h2 class="plan">PLAN (6)</h2>
-  <div class="table-wrap">
-    <table id="t-plan">
-      <thead>
-        <tr>
-          <th onclick="sort('t-plan',0)">#</th>
-          <th onclick="sort('t-plan',1)">Title</th>
-          <th onclick="sort('t-plan',2)">Summary</th>
-          <th onclick="sort('t-plan',3)">Stack</th>
-          <th onclick="sort('t-plan',4)">Source</th>
-          <th onclick="sort('t-plan',5)">Date</th>
-          <th>Cmd</th>
-          <th>Prompt</th>
-        </tr>
-      </thead>
-      <tbody>
+  <span id="s-code"></span>
+  <span id="s-meta"></span>
+  <span id="s-test"></span>
+  
+  <h2 class="plan">🗺 Planning & Design</h2>
+  <div class="table-wrap"><table id="t-plan">
+    <thead><tr>
+      <th onclick="sort('t-plan',0)"># ⇅</th>
+      <th onclick="sort('t-plan',1)">Title ⇅</th>
+      <th onclick="sort('t-plan',2)">Summary ⇅</th>
+      <th onclick="sort('t-plan',3)">Typical Stack ⇅</th>
+      <th onclick="sort('t-plan',4)">Source ⇅</th>
+      <th onclick="sort('t-plan',5)">Date ⇅</th>
+      <th>Slash Cmd</th>
+      <th>Prompt</th>
+    </tr></thead>
+    <tbody>
       <tr data-section="Planning & Design">
         <td>1</td>
         <td><strong>App Blueprint Clarifier</strong></td>
@@ -163,27 +172,23 @@ a:hover { text-decoration:underline; }
         <td><button class="toggle" onclick="toggleRow(this)">Show prompt</button>
             <div class="expandable"><pre data-slug="system-architecture-designer"></pre></div></td>
       </tr></tbody>
-    </table>
-  </div>
-  <span id="s-code"></span>
-  <h2 class="code">CODE (7)</h2>
-  <div class="table-wrap">
-    <table id="t-code">
-      <thead>
-        <tr>
-          <th onclick="sort('t-code',0)">#</th>
-          <th onclick="sort('t-code',1)">Title</th>
-          <th onclick="sort('t-code',2)">Summary</th>
-          <th onclick="sort('t-code',3)">Stack</th>
-          <th onclick="sort('t-code',4)">Source</th>
-          <th onclick="sort('t-code',5)">Date</th>
-          <th>Cmd</th>
-          <th>Prompt</th>
-        </tr>
-      </thead>
-      <tbody>
+  </table></div>
+
+  <h2 class="code">🛠 Coding & Debugging</h2>
+  <div class="table-wrap"><table id="t-code">
+    <thead><tr>
+      <th onclick="sort('t-code',0)"># ⇅</th>
+      <th onclick="sort('t-code',1)">Title ⇅</th>
+      <th onclick="sort('t-code',2)">Summary ⇅</th>
+      <th onclick="sort('t-code',3)">Typical Stack ⇅</th>
+      <th onclick="sort('t-code',4)">Source ⇅</th>
+      <th onclick="sort('t-code',5)">Date ⇅</th>
+      <th>Slash Cmd</th>
+      <th>Prompt</th>
+    </tr></thead>
+    <tbody>
       <tr data-section="Coding & Debugging">
-        <td>1</td>
+        <td>7</td>
         <td><strong>Feature-by-Feature Code Generator</strong></td>
         <td>Builds one feature at a time with plans, scoped code, and next-step prompts.</td>
         <td>Next.js, TypeScript, Prisma</td>
@@ -194,7 +199,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="feature-code-generator"></pre></div></td>
       </tr>
       <tr data-section="Coding & Debugging">
-        <td>2</td>
+        <td>8</td>
         <td><strong>Error-Focused Debugging Loop</strong></td>
         <td>Repairs failing files using exact logs with minimal changes and clear explanations.</td>
         <td>Any JS, TS, or Python stack</td>
@@ -205,7 +210,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="debug-loop"></pre></div></td>
       </tr>
       <tr data-section="Coding & Debugging">
-        <td>3</td>
+        <td>9</td>
         <td><strong>Web Developer Assistant</strong></td>
         <td>Pair-programmer for web apps: scaffolds, implements, enforces a11y/security, gives CLI commands.</td>
         <td>React or Next.js, Express, PostgreSQL, Vercel</td>
@@ -216,7 +221,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="web-dev-assistant"></pre></div></td>
       </tr>
       <tr data-section="Coding & Debugging">
-        <td>4</td>
+        <td>10</td>
         <td><strong>Admin CRUD Panel Generator</strong></td>
         <td>Generates an internal admin UI with CRUD API design and role-based access suggestions.</td>
         <td>React Admin, Next.js, Supabase or Node API</td>
@@ -227,7 +232,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="admin-crud-panel"></pre></div></td>
       </tr>
       <tr data-section="Coding & Debugging">
-        <td>5</td>
+        <td>11</td>
         <td><strong>Codebase-Aware Refactor Agent</strong></td>
         <td>Reads files via tools, plans safe refactors, and reacts to test results.</td>
         <td>LangChain/LangGraph agent with file-search & test tools</td>
@@ -238,7 +243,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="refactor-agent"></pre></div></td>
       </tr>
       <tr data-section="Coding & Debugging">
-        <td>6</td>
+        <td>12</td>
         <td><strong>Semantic HTML & CSS Generator</strong></td>
         <td>Generates accessible, semantic HTML and framework CSS for any UI component.</td>
         <td>HTML5, Tailwind CSS or CSS Modules</td>
@@ -249,7 +254,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="semantic-html-css-generator"></pre></div></td>
       </tr>
       <tr data-section="Coding & Debugging">
-        <td>7</td>
+        <td>13</td>
         <td><strong>Mock Data Generator</strong></td>
         <td>Generates realistic, consistent mock data for any entity in JSON, CSV, SQL, or TypeScript. Includes edge cases and optional seed scripts.</td>
         <td>JSON, CSV, SQL, TypeScript fixtures</td>
@@ -259,27 +264,23 @@ a:hover { text-decoration:underline; }
         <td><button class="toggle" onclick="toggleRow(this)">Show prompt</button>
             <div class="expandable"><pre data-slug="mock-data-generator"></pre></div></td>
       </tr></tbody>
-    </table>
-  </div>
-  <span id="s-meta"></span>
-  <h2 class="meta">META (3)</h2>
-  <div class="table-wrap">
-    <table id="t-meta">
-      <thead>
-        <tr>
-          <th onclick="sort('t-meta',0)">#</th>
-          <th onclick="sort('t-meta',1)">Title</th>
-          <th onclick="sort('t-meta',2)">Summary</th>
-          <th onclick="sort('t-meta',3)">Stack</th>
-          <th onclick="sort('t-meta',4)">Source</th>
-          <th onclick="sort('t-meta',5)">Date</th>
-          <th>Cmd</th>
-          <th>Prompt</th>
-        </tr>
-      </thead>
-      <tbody>
+  </table></div>
+
+  <h2 class="meta">🧠 Meta Prompting</h2>
+  <div class="table-wrap"><table id="t-meta">
+    <thead><tr>
+      <th onclick="sort('t-meta',0)"># ⇅</th>
+      <th onclick="sort('t-meta',1)">Title ⇅</th>
+      <th onclick="sort('t-meta',2)">Summary ⇅</th>
+      <th onclick="sort('t-meta',3)">Typical Stack ⇅</th>
+      <th onclick="sort('t-meta',4)">Source ⇅</th>
+      <th onclick="sort('t-meta',5)">Date ⇅</th>
+      <th>Slash Cmd</th>
+      <th>Prompt</th>
+    </tr></thead>
+    <tbody>
       <tr data-section="Meta Prompting">
-        <td>1</td>
+        <td>14</td>
         <td><strong>Prompt Master</strong></td>
         <td>#1 on r/PromptEngineering March 2026. Generates the perfect tool-optimized prompt for any AI with 1–3 clarifying questions and memory support.</td>
         <td>Claude Code, GPT-4o, Cursor, Midjourney</td>
@@ -290,7 +291,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="prompt-master"></pre></div></td>
       </tr>
       <tr data-section="Meta Prompting">
-        <td>2</td>
+        <td>15</td>
         <td><strong>Bento-Box Task Prompt</strong></td>
         <td>Separates numbered TASKS from raw data inputs to eliminate hallucinations on complex troubleshooting and code tasks.</td>
         <td>Any LLM (Claude, GPT-4o, Gemini, local models)</td>
@@ -301,7 +302,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="bento-box-task"></pre></div></td>
       </tr>
       <tr data-section="Meta Prompting">
-        <td>3</td>
+        <td>16</td>
         <td><strong>Prompt Coach</strong></td>
         <td>Reviews your Claude Code session logs and scores prompting clarity, token efficiency, tool usage, and iteration pattern.</td>
         <td>Claude Code with session log access</td>
@@ -311,27 +312,23 @@ a:hover { text-decoration:underline; }
         <td><button class="toggle" onclick="toggleRow(this)">Show prompt</button>
             <div class="expandable"><pre data-slug="prompt-coach"></pre></div></td>
       </tr></tbody>
-    </table>
-  </div>
-  <span id="s-test"></span>
-  <h2 class="test">TEST (4)</h2>
-  <div class="table-wrap">
-    <table id="t-test">
-      <thead>
-        <tr>
-          <th onclick="sort('t-test',0)">#</th>
-          <th onclick="sort('t-test',1)">Title</th>
-          <th onclick="sort('t-test',2)">Summary</th>
-          <th onclick="sort('t-test',3)">Stack</th>
-          <th onclick="sort('t-test',4)">Source</th>
-          <th onclick="sort('t-test',5)">Date</th>
-          <th>Cmd</th>
-          <th>Prompt</th>
-        </tr>
-      </thead>
-      <tbody>
+  </table></div>
+
+  <h2 class="test">🧪 Testing & Evaluation <span class="new-badge">NEW</span></h2>
+  <div class="table-wrap"><table id="t-test">
+    <thead><tr>
+      <th onclick="sort('t-test',0)"># ⇅</th>
+      <th onclick="sort('t-test',1)">Title ⇅</th>
+      <th onclick="sort('t-test',2)">Summary ⇅</th>
+      <th onclick="sort('t-test',3)">Typical Stack ⇅</th>
+      <th onclick="sort('t-test',4)">Source ⇅</th>
+      <th onclick="sort('t-test',5)">Date ⇅</th>
+      <th>Slash Cmd</th>
+      <th>Prompt</th>
+    </tr></thead>
+    <tbody>
       <tr data-section="Testing & Evaluation">
-        <td>1</td>
+        <td>17</td>
         <td><strong>Prompt Pre-Execution Rubric</strong></td>
         <td>Scores a prompt on 6 dimensions BEFORE running it and returns a RUN / REVISE / REDESIGN verdict with specific rewrites. Posted today, March 19 2026.</td>
         <td>Any LLM — no tools required</td>
@@ -342,7 +339,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="prompt-pre-execution-rubric"></pre></div></td>
       </tr>
       <tr data-section="Testing & Evaluation">
-        <td>2</td>
+        <td>18</td>
         <td><strong>LLM-as-a-Judge Evaluator</strong></td>
         <td>Uses the LLM as an impartial judge to score or A/B compare AI outputs for quality, accuracy, and relevance.</td>
         <td>Any LLM; integrates with DeepEval or LangChain eval chains</td>
@@ -353,7 +350,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="llm-as-judge"></pre></div></td>
       </tr>
       <tr data-section="Testing & Evaluation">
-        <td>3</td>
+        <td>19</td>
         <td><strong>Prompt Regression Tester</strong></td>
         <td>Compares old vs new prompt versions across test cases to catch regressions before deploying to production.</td>
         <td>DeepEval, PromptLayer, or standalone</td>
@@ -364,7 +361,7 @@ a:hover { text-decoration:underline; }
             <div class="expandable"><pre data-slug="prompt-regression-tester"></pre></div></td>
       </tr>
       <tr data-section="Testing & Evaluation">
-        <td>4</td>
+        <td>20</td>
         <td><strong>Prompt Analyzer (9-Dimension Score)</strong></td>
         <td>Scores any prompt across 9 quality dimensions out of 100 with specific suggestions and a fully rewritten improved version.</td>
         <td>Any LLM — no tools required</td>
@@ -374,10 +371,11 @@ a:hover { text-decoration:underline; }
         <td><button class="toggle" onclick="toggleRow(this)">Show prompt</button>
             <div class="expandable"><pre data-slug="prompt-analyzer"></pre></div></td>
       </tr></tbody>
-    </table>
-  </div>
+  </table></div>
+
+
   <div class="install-box">
-    <h3>📦 Install all 20 skills</h3>
+    <h3 style="margin:0 0 8px">📦 Install all 20 skills into Claude Code</h3>
     <p>Unzip <strong>claude-skills-march-2026.zip</strong>, then run:</p>
     <pre>cp -r app-blueprint-clarifier/ ~/.claude/skills/app-blueprint-clarifier/
 cp -r spec-and-tickets/ ~/.claude/skills/spec-and-tickets/
@@ -399,10 +397,13 @@ cp -r prompt-pre-execution-rubric/ ~/.claude/skills/prompt-pre-execution-rubric/
 cp -r llm-as-judge/ ~/.claude/skills/llm-as-judge/
 cp -r prompt-regression-tester/ ~/.claude/skills/prompt-regression-tester/
 cp -r prompt-analyzer/ ~/.claude/skills/prompt-analyzer/</pre>
-    <p>Restart Claude Code or run <code>/reload-skills</code>.</p>
+    <p>Restart Claude Code or run <code>/reload-skills</code>. Each skill becomes a slash command automatically.</p>
   </div>
-  <p class="foot">Generated March 20, 2026 by Perplexity Pro daily task workflow.</p>
+
+  <p class="foot">Sources: r/PromptEngineering · r/ClaudeCode · FlowGPT · PromptBase · LangChain Hub · Builder.io · DeepEval · Prompt Testing &amp; Validation Frameworks<br>
+  Generated March 19, 2026 by Perplexity daily task at 7:30 AM Toronto time.</p>
 </div>
+
 <script>
 const prompts = {
   "system-architecture-designer": `You are an expert at system design and architecture.
@@ -748,20 +749,18 @@ Return a markdown table with Dimension, Score, and one-sentence rationale.
 ### Improved prompt
 Return the full rewritten prompt with all modifications **bolded** so the user can see exactly what changed.`
 };
+
 document.querySelectorAll('pre[data-slug]').forEach(pre => {
-  pre.textContent = prompts[pre.dataset.slug] || '(prompt text)';
+  pre.textContent = prompts[pre.dataset.slug] || '(prompt text coming in next daily update)';
 });
 
-const prompts = {}; // populated dynamically
-document.querySelectorAll('pre[data-slug]').forEach(pre => {
-  pre.textContent = prompts[pre.dataset.slug] || '(prompt text)';
-});
 function toggleRow(btn) {
   const box = btn.nextElementSibling;
   const vis = box.style.display === 'block';
   box.style.display = vis ? 'none' : 'block';
   btn.textContent = vis ? 'Show prompt' : 'Hide prompt';
 }
+
 const _s = {};
 function sort(tid, col) {
   const tbody = document.getElementById(tid).tBodies[0];
@@ -777,6 +776,7 @@ function sort(tid, col) {
   });
   rows.forEach(r => tbody.appendChild(r));
 }
+
 function filterAll() {
   const q = document.getElementById('search').value.toLowerCase();
   const sec = document.getElementById('secFilter').value.toLowerCase();
@@ -786,7 +786,6 @@ function filterAll() {
     row.style.display = ((!q||txt.includes(q))&&(!sec||txt.includes(sec))&&(!src||txt.includes(src))) ? '' : 'none';
   });
 }
-
 </script>
 </body>
 </html>
